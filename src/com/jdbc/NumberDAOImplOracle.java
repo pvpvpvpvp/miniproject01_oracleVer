@@ -187,5 +187,4 @@ public class NumberDAOImplOracle implements NumberDAO {
 		}
 		return 1 == deletedCount;
 	}
-
 }

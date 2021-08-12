@@ -11,23 +11,23 @@ public class NumberDAOApp {
 		// TODO Auto-generated method stub
 //		searchNumberAll();
 		pro: while (true) {// pro:는 지정해서 break문을 위해 적어줌
-			resetIndex(); //인덱스 정렬로직
+			resetIndex(); // 인덱스 정렬로직
 			int a = InputNumer();
 			switch (a) { // 메소드로 간결하게
 			case 1:
-				listNumbers();
+				listNumbers(); //리스트 불러오기
 				break;
 			case 2:
-				insertPhoneBook();
+				insertPhoneBook(); //데이터 삽입
 				break;
 			case 3:
-				deleteNumber();
+				deleteNumber(); // 데이터 삭제
 				break;
 			case 4:
-				searchNumberAll();
+				searchNumberAll(); // 찾기  모든값에 대해서 가능
 				break;
 			case 5:
-				endCode();
+				endCode();	//종료구문 출력
 				break pro;
 			default:
 				System.out.println("[다시 입력해주세요]");
@@ -47,7 +47,7 @@ public class NumberDAOApp {
 		System.out.print("메뉴 번호: ");
 		String add = sc.next();
 		int a = 0;
-		try {
+		try {		//숫자 이외의 값에 대한 예외처리
 			a = Integer.parseInt(add);
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -86,8 +86,10 @@ public class NumberDAOApp {
 			checkId++;
 			NumberVO vo = it.next();
 			if (vo.getNumberId() != checkId) { // 값이 순차적이지 않으면!
-				dao.insert(new NumberVO(vo.getNumberName(), vo.getNumberHp(), vo.getNumberTel()), checkId); //빈 인덱스칸에 쓰고
-				dao.delete(vo.getNumberId());												//쓴내용을 지운다.
+				dao.insert(new NumberVO(vo.getNumberName(), vo.getNumberHp(), vo.getNumberTel()), checkId); // 빈 인덱스칸에
+																											// 쓰고
+				dao.delete(vo.getNumberId()); // 쓴내용을 지운다.
+//				System.out.println("정렬 인덱스:"+vo.getNumberId()+"가 인덱스"+checkId+"로 정렬되었습니다");
 			}
 		}
 	}
